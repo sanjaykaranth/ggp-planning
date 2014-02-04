@@ -1,0 +1,111 @@
+*{ padding:0px; margin:0px; border:0px; font-family: "Helvetica", Sans-Serif;}
+
+body{background-color:rgb(0,0,0); width:100%;}
+
+
+
+  table.bordered td
+    {
+       border-color: rgb(355,153,0);
+       border-width: 1px 1px 1px 1px;
+       border-style: solid;
+    }
+    
+table td.bordered
+{
+      border-color: rgb(355,153,0);
+       border-width: 1px 1px 1px 1px;
+       border-style: solid;
+}
+div#container{margin-left:auto; margin-right:auto; position:relative; width:982px; height:auto; text-align:center;}
+
+
+div#logo{ position:absolute; top:0px; left:0px; height:130px; width:600px;
+background-image:url('img/logotext.gif'); background-repeat:no-repeat; }
+
+/*div#logotext{ position:absolute; top:26px; left:93px; width:424px; height:25px; font-weight:bold; background-image:url('img/cname.gif');}
+*/
+
+div#nav1, div#nav2{position:relative; width:985px; height:60px;}
+
+div#nav3{position:relative; width:535px; height:42px; margin-left:auto; margin-right:auto;}
+
+
+a.navlinks1, a.navlinks2{height:60px; float:left;}
+
+a.navlinks3{height:42px; float:left;}
+
+
+div#search{position:relative; float:left; width:242px; height:60px; background-image:url('img/i6.jpg'); z-index:8;}
+
+div#search input{position:absolute; left:50px; top:22px; width:170px; height:18px; font-size:11px; color:rgb(0,0,0); z-index:9; overflow:hidden; line-height:18px;}
+
+
+
+div#footer{font-size:14px; color:rgb(90,90,90); padding:10px 0px 15px 0px; margin-left:auto; margin-right:auto;}
+
+
+
+
+
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Products Menu ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+
+
+#productmenu{text-align:left; position:absolute; float:left; width:150px; height:auto;  }
+
+div#pmenuhead{position:relative; height:35px; background:url('img/pmenuhead.jpg');}
+
+div#pmenutop{position:relative; height:5px; background:url('img/pmenutop.jpg');}
+
+div#pmenuitems{position:relative; background:url('img/pmenubg.jpg') repeat-y; overflow:hidden;}
+
+div#pmenuhide{position:absolute; top:0px; height:600px; width:220px; background-color:rgb(0,0,0);}
+
+#productmenu h3{ color:rgb(130,130,130); padding-left:30px; line-height:35px; width:190px; font-size:15px; font-weight:bold; overflow:hidden; cursor:default;}
+
+#productmenu h4{ background:url('img/pmenuicon.jpg') center left;
+ padding-left:30px; line-height:30px; width:190px; overflow:hidden;
+ text-decoration:none; font-size:15px;  color:rgb(130,130,130); font-weight:bold; cursor:pointer;}
+
+#productmenu h4:hover{background:rgb(50,50,50); color:rgb(220,230,240);}
+
+div#pmenubottom{position:relative; height:2px; background:url('img/pmenubottom.jpg');}
+
+div#container #content{position:relative;  background-color:rgb(0,0,0)
+width:960px; border:solid 4px rgb(100,100,100); margin-left:auto
+margin-right:auto; text-align:left; overflow:hidden; height:auto;
+color:rgb(210,180,140); font-size:15px; min-height:350px}
+
+.products{ position:relative; display:none;}
+
+.centerstuff{position:absolute; left:180px; top:10px; width:750px;}
+
+.automargins{margin-left:auto;margin-right:auto;}
+
+.orange{color:rgb(355,153,0);}
+
+.mainheading{font-weight:bold;font-size:18px;color:rgb(355,153,0);}
+
+.subheading{font-weight:normal;font-size:16.5px;color:rgb(355,153,0);}
+
+.subboldtan{font-weight:bold;font-size:16.5px;color:rgb(210,180,140);}
+
+#dhtmldiv{ position:absolute; top:10px; left:180px; width:800px;}
+
+
+
+
+
+
+/* ~~~~~ Dimensions can be modified here ~~~~~ */
+
+
+.product_intro{position:absolute; left:0px; top:0px; width:300px; text-align:justify}
+
+.product_image{position:absolute; left:310px; top:0px; width:450px; height:350px;}
+
+.product_specs{position:absolute; left:310px; top:360px; height:100px;}
+
+/*div#container #content{height:350px;}*/

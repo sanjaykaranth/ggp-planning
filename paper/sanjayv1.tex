@@ -1,0 +1,232 @@
+%%%% ijcai09.tex
+
+\typeout{IJCAI-09 Instructions for Authors}
+
+% These are the instructions for authors for IJCAI-09.
+% They are the same as the ones for IJCAI-07 with superficical wording
+%   changes only.
+
+\documentclass{article}
+% The file ijcai09.sty is the style file for IJCAI-09 (same as ijcai07.sty).
+\usepackage{ijcai09}
+
+% Use the postscript times font!
+\usepackage{times}
+
+% the following package is optional:
+%\usepackage{latexsym} 
+
+% Following comment is from ijcai97-submit.tex:
+% The preparation of these files was supported by Schlumberger Palo Alto
+% Research, AT\&T Bell Laboratories, and Morgan Kaufmann Publishers.
+% Shirley Jowell, of Morgan Kaufmann Publishers, and Peter F.
+% Patel-Schneider, of AT\&T Bell Laboratories collaborated on their
+% preparation.
+
+% These instructions can be modified and used in other conferences as long
+% as credit to the authors and supporting agencies is retained, this notice
+% is not changed, and further modification or reuse is not restricted.
+% Neither Shirley Jowell nor Peter F. Patel-Schneider can be listed as
+% contacts for providing assistance without their prior permission.
+
+% To use for other conferences, change references to files and the
+% conference appropriate and use other authors, contacts, publishers, and
+% organizations.
+% Also change the deadline and address for returning papers and the length and
+% page charge instructions.
+% Put where the files are available in the appropriate places.
+
+\title{IJCAI--09 Formatting Instructions\thanks{These match the formatting instructions of IJCAI-07. The support of IJCAI, Inc. is acknowledged.}}
+\author{Craig Boutilier \\
+Department of Computer Science\\
+University of Toronto \\
+pcchair09@ijcai.org}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+  The {\it IJCAI--09 Proceedings} will be printed from electronic
+  manuscripts submitted by the authors. The electronic manuscript will
+  also be included in a CD-ROM version of the proceedings. This paper
+  provides the style instructions.
+\end{abstract}
+
+\section{Translation}
+
+We show that the translation from GDL to PDDL can done, by interpreting GDL rules as situation-calculus successor-state axioms and then utilizing results from \cite{roeger:kr}.
+Certain features special to GDL such as multiple goals are discussed separately later.
+
+\subsection{GDL to Situation Calculus}
+
+A Basic Action Theory corresponding to the given game description
+can be generated as described below.
+
+BAT=$\Sigma$U$T_{SSA}$U $T_{APA}$ .. Explain. Cite Reiter 
+
+\subsubsection{$next$ rules}
+
+\begin{enumerate}
+\item 1. Form the Clark completition of the next rules for each predicate
+\item 2. Add existential quantifiers to free variables in GDL rule bodies
+\item 3. Replace the $distinct$ predicate with negated equality
+\item 4. Replace \emph{ true(function($x_{1},..,x_{n}$)) }with a new predicate \emph{function\_predicate($x_{1},..,x_{n}$)
+} and \emph{(does ?player action($\vec{X}$)} with \emph{$a=action(\vec{X})$}
+\end{enumerate}
+
+We get successor-state axiom versions of the next rules and they constitute $T_{SSA}$
+
+For example, consider these two rules:\newline
+(<= (next (cell ?x ?y nolight))
+        (true (cell ?x ?y light))
+        (affected ?x ?y)) \newline\newline
+(<= (next (cell ?x ?y ?state))
+        (true (cell ?x ?y ?state))
+        (not (affected ?x ?y)))\newline\newline
+
+They can be replaced by the axiom
+
+$Cell(X,Y,Z,do(a,s))\equiv((Z=nolight\land cell(X,Y,light,s)\land affected(X,Y,s)) \lor (cell(X,Y,Z,s)\land \neg affected(X,Y,s)))$
+
+\subsubsection{$legal$ rules}
+The GDL $legal$ rules can similarly be transformed into the $Poss$ predicates of Basic Action Theories, with one extension: $terminal$ should be appended to the body of the legal rules. This ensures that no actions are applicable when the $terminal$ predicate is true, as per GDL semantics.
+
+\subsubsection{$init$ rules}
+For every predicate, for every $init$ rule of the form $(init (predicate p_{1} .. q_{1}))$,   $predicate(x_{1},..,x_{n})\equiv (x_{1}=p_{1} \land .. \land x_{n}=q_{1}) \lor .. \lor (x_{1}=p_{n} \land .. \land x_{n}=q_{n}) $ is added to the initial database, or $\neg predicate(\vec{X})$ if no such rule exists.
+
+\subsubsection{Other rules}
+Other rules excluding $goal$, and $role$ rules are form part
+of the \emph{foundational axioms}($\Sigma$)\emph{ }of the Basic
+Action Theory.
+
+\subsection{Situation Calculus to PDDL/ADL:}
+
+\cite{roeger:kr} identify certain restrictions on the BAT so that
+it can be translated to ADL efficiently, where efficiency is in the
+context of the compilability framework of \cite{nebel:jair-2000}.
+
+Keeping in mind that GDL does not have functional fluents, these are the relevant restrictions:
+
+\begin{enumerate}
+\item 1. The set of true situation-independent predicates and fluent predicates in
+the initial state have to be enumerated. That is, there are rules of the form
+$F(x_{1},..,x_{n})\equiv (x_{1}=p_{1} \land .. \land x_{n}=q_{1}) \lor .. \lor (x_{1}=p_{n} \land .. \land x_{n}=q_{n})$ or $\neg F(\vec{X})$  (1)
+\item 2. Unique name axioms $c_{i}\neq c_{j}$ for every pair of different constants $c_{i},c_{j}$.
+\end{enumerate}
+
+The GDL specification implicitly incorporates the unique name axioms. Hence results of \cite{roeger:kr} directly carry over to a restricted subset of GDL:
+
+\begin{description}
+\item [{Theorem 1}] All function-free GDL single-player game descriptions with no rules apart from next, legal,terminal, init and goal can be translated to ADL preserving plan length exactly.
+\end{description}
+
+The requirements in Theorem  1 are overtly restrictive.Restriction 1 implies that general rules are not allowed on the right hand side of equation(1).Also, relaxing 1 means we have to disallow functions which refer to unnamed constants to stay within the expressive power of ADL\cite{roeger:aaai}. 
+
+We discuss how recursive stratified rules and situation-independent functions can be handled in some cases in the following sections.
+
+\subsection{Recursive Rules}
+
+GDL allows fairly unrestricted rules to be part of the foundational axioms($\Sigma$). These correspond to the 'derived predicates' which are part of PDDL2.2. As discussed in \cite{Thiebaux03indefense:jair}, they add significant expressive power in the sense that they cannot be compiled to ADL without blowing up domain definitions or plan length.
+
+The GDL specification requires that the dependency graph(the directed graph with predicates as nodes and edges from predicate $p$ to predicate $q$ if there is a rule with $q$ as the head and contains $p$ in the body) not contain cycles with negations. There is a direct correspondence between the kind of rules permitted by GDL and the requirement in \cite{Thiebaux03indefense:jair} that the rules be stratified; stratification can be achieved for example by the following algorithm:
+
+\begin{itemize}
+\item In the GDL rule dependency graph, collapse every maximal cycle into a single vertex(all nodes in the
+cycle belong to the same stratum; all cycles are negation free).
+\item Topologically sort the resulting directed acyclic graph to get a stratification. 
+\end{itemize}
+
+\subsection{Function symbols}
+
+GDL allows function symbols that are situation independent. We identify a restriction on GDL rules which allow all possible function objects to be enumerated and named. It is convenient to define a domain dependency graph as in \cite{fluxplayer:aaai07}, where it is used for computing supersets of domains of predicates and functions.
+
+\begin{description}
+\item [{Restriction R}]
+There are no two functions or predicates P,Q such that $P_{i}$ and $Q_{j}$ that belong to the same component and there is a rule in which P occurs as an argument of Q or Q occurs as an argument in P.
+\end{description}
+
+This in effect ensures that nested function terms cannot occur, allowing enumeration of all possible instantiations of function symbols starting from the constants in the game description. Thus functions can be compiled away as described below, which is similar to the procedure described in \cite{roeger:aaai} for compiling away functional fluents:
+
+For each function symbol f in the game description, introduce a new
+predicate $predicate_{f}$.
+
+\begin{itemize}
+\item Repeatedly do the following until the rules are function-free:
+
+- \emph{In each rule, replace every occurance of $predicate(t_{1},t_{2},..,f(q_{1},q{2},..,q_{n}),..,t_{m})$with }
+
+\emph{$predicate(t_{1},t_{2},..,\upsilon,..,t_{m}) \land  predicate_{f}(q_{1},q{2},..,q_{n},\upsilon)$}
+
+\item Next add the facts corresponding to these newly introduced predicates to the initial state:
+
+\emph{For each function f, and each possible instantiation $\vec{X}$
+of it's parameters(parameter domains have been identified), add the
+fact $predicate_{f}$($\vec{X}$, $\upsilon$), where $\upsilon$
+is a new symbol, to the initial state.}
+
+\end{itemize}
+With all previously 'unnamed' objects enumerated this way, we can
+add the Domain Closure Axiom to the BAT.
+
+\subsection{Multiple Goals}
+
+Another feature of GDL that has no direct analogue in ADL/PDDL is
+that of multiple goals with rewards. 
+
+GDL allows multiple goal rules are of the form \newline
+\emph{(goal player N)}$\equiv expression$
+
+And the semantics is that a player scores $N$ points if the game
+terminates in a state in which '\emph{expression}' is true, i.e, when
+$terminal \land (goal player N)$ is true.
+
+Multiple goals are described in the ADL problem file using a modification of the ADL goal clause:\newline\newline
+\emph{(:goal N1 expression1)}\newline
+\emph{(:goal N2 expression2)}\newline
+etc.
+
+A simple extension to FF to handle multiple goals is described in the implementation section.
+
+The following Corollary to Theorem 1 formally summarizes the above discussion:
+
+\begin{description}
+\item [{Corollary}] All GDL single-player game descriptions satisfying restriction R can be compiled to ADL extended with recursive rules and multiple goals preserving plan size exactly.
+\end{description}
+
+
+\section{Implementation}
+
+The system comprises of a translator and a planner. The translator
+is an implementation of the procedure described above. It is written
+in Prolog on top of the Fluxplayer system\cite{fluxplayer:aaai07}.
+
+\subsection{Planner}
+Our planner is built upon the FF planner\cite{hoffmann:ff} with two extensions:
+
+\subsubsection{Axioms}
+In our planning system, these rules are handled within FF with the extensions described in \cite{Thiebaux03indefense:jair}
+
+\subsubsection{Multiple Goals}
+
+The planner maintains a list of goal-reward pairs $L={(G_{1},r_{1}),(G_{2},r_{2}),..,(G_{n},r_{n})}$,
+and a list of plans for goals that have already been achieved once.
+
+The relaxed plan heuristic returns an estimate of the distance between
+a given state \emph{s} and goal \emph{g}, $h(s,g)$. The planner searches
+using the following function of the $h(s,G_{i}),r_{i}$ values for
+the current list of goals:
+
+$H(s)=\sum_{i}h(s,G_{i})^{k}r_{i}$ for $k=1$ or $k=2$
+
+When the planner reaches a state satisfying a goal $G_{i}$, the path
+to this state, plan $P_{i}$, is saved. $G_{i}$ and all goals with
+rewards lesser than $r_{i}$ are removed from $L$ and search is continued.
+
+
+
+\bibliographystyle{named}
+\bibliography{sanjayv1}
+
+\end{document}
+

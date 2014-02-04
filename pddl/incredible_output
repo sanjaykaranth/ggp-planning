@@ -1,0 +1,122 @@
+
+ff: parsing domain file
+domain 'INCREDIBLE' defined
+ ... done.
+ff: parsing problem file
+problem 'INCREDIBLE' defined
+ ... done.
+
+
+
+Enforced Hill-climbing failed !
+switching to Best-first Search now.
+182==182reward goal #0 :
+reward goal: G25:25 
+reward goal #1 :
+reward goal: G30:30 
+reward goal #2 :
+reward goal: G55:55 
+reward goal #3 :
+reward goal: G45:45 
+reward goal #4 :
+reward goal: G70:70 
+reward goal #5 :
+reward goal: G75:75 
+reward goal #6 :
+reward goal: G100:100 
+
+advancing to distance : 3585
+                        3230
+                        2980
+                        2730
+                        2630
+                        2605
+Extracted plan :0 
+
+Plan for Goal value:25
+
+ff: found legal plan as follows
+
+step    0: U F E
+        1: U E D
+        2: S D F
+        3: S B D
+        4: GOAL25
+     
+ oncedone 
+Time: 0.190000
+
+advancing to distance : 3435
+                        3105
+                        2880
+                        2655
+                        2580
+                        2320
+                        2175
+                        2120
+Extracted plan :1 
+
+Plan for Goal value:55
+
+ff: found legal plan as follows
+
+step    0: U F E
+        1: U E D
+        2: S D F
+        3: S B D
+        4: U C A
+        5: S A E
+        6: S C A
+        7: GOAL55
+     
+ oncedone 
+Time: 0.280000
+
+advancing to distance : 2575
+                        2330
+                        2160
+                        1990
+                        1895
+                        1720
+                        1615
+                        1370
+                        1125
+                         880
+                         635
+                         435
+Extracted plan :2 
+
+Plan for Goal value:100
+
+ff: found legal plan as follows
+
+step    0: U F E
+        1: U E D
+        2: S D F
+        3: S B D
+        4: U C A
+        5: S A E
+        6: S C A
+        7: MOVE
+        8: MOVE
+        9: GRAB
+       10: MOVE
+       11: MOVE
+       12: DROP
+       13: GOAL100
+     
+ oncedone 
+Time: 7.190000
+
+
+ff: found legal plan as follows
+
+step 
+
+time spent:    0.03 seconds instantiating 2 easy, 105 hard action templates
+               0.00 seconds reachability analysis, yielding 198 facts and 100 actions
+               0.00 seconds creating final representation with 182 relevant facts
+               0.02 seconds building connectivity graph
+               7.19 seconds searching, evaluating 28802 states, to a max depth of 0
+               7.24 seconds total time
+

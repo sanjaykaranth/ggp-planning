@@ -1,0 +1,41 @@
+\begin{thebibliography}{}
+
+\bibitem[\protect\citeauthoryear{Hoffmann}{2001}]{hoffmann:ff}
+Jorg Hoffmann.
+\newblock Ff: The fast-forward planning system.
+\newblock {\em The AI Magazine}, 22:57--62, 2001.
+
+\bibitem[\protect\citeauthoryear{Nebel}{2000}]{nebel:jair-2000}
+Bernhard Nebel.
+\newblock On the compilability and expressive power of propositional planning
+  formalisms.
+\newblock {\em Journal of Artificial Intelligence Research}, 12:271--315, 2000.
+
+\bibitem[\protect\citeauthoryear{R{\"o}ger and Nebel}{2007}]{roeger:aaai}
+Gabriele R{\"o}ger and Bernhard Nebel.
+\newblock Expressiveness of adl and golog: Functions make a difference.
+\newblock In {\em AAAI}, pages 1051--1056, 2007.
+
+\bibitem[\protect\citeauthoryear{R{\"o}ger \bgroup \em et al.\egroup
+  }{2008}]{roeger:kr}
+Gabriele R{\"o}ger, Malte Helmert, and Bernhard Nebel.
+\newblock On the relative expressiveness of adl and golog: The last piece in
+  the puzzle.
+\newblock In {\em KR}, pages 544--551, 2008.
+
+\bibitem[\protect\citeauthoryear{Schiffel and
+  Thielscher}{2007}]{fluxplayer:aaai07}
+Stephan Schiffel and Michael Thielscher.
+\newblock Fluxplayer: A successful general game player.
+\newblock In {\em AAAI '07: Proc. 22nd AAAI Conf. Artificial Intelligence},
+  pages 1191--1196, Vancouver, Canada, July 2007. AAAI Press.
+
+\bibitem[\protect\citeauthoryear{Thiebaux \bgroup \em et al.\egroup
+  }{2003}]{Thiebaux03indefense:jair}
+Sylvie Thiebaux, Joerg Hoffmann, and Bernhard Nebel.
+\newblock In defense of pddl axioms.
+\newblock In {\em In Proceedings of the Eighteenth International Joint
+  Conference on Artificial Intelligence (IJCAI-03}, pages 961--966. Morgan
+  Kaufmann, 2003.
+
+\end{thebibliography}

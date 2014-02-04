@@ -1,0 +1,97 @@
+
+ff: parsing domain file
+domain 'EIGHT' defined
+ ... done.
+ff: parsing problem file
+problem 'EIGHT' defined
+ ... done.
+
+
+
+Enforced Hill-climbing failed !
+switching to Best-first Search now.
+286==286reward goal #0 :
+reward goal: G99:99 
+reward goal #1 :
+reward goal: G100:100 
+
+advancing to distance : 6382
+                        5685
+                        5485
+                        5285
+                        5085
+                        4885
+                        4685
+                        4485
+                        4285
+                        4085
+                        3885
+                        3685
+                        3485
+                        3285
+                        3085
+                        2985
+                        2388
+                        2189
+                        1990
+                        1592
+                        1393
+                        1194
+                         995
+                         895
+                         697
+                         497
+                         297
+Extracted plan :0 
+
+Plan for Goal value:100
+
+ff: found legal plan as follows
+
+step    0: MOVE N3 N2
+        1: MOVE N3 N1
+        2: MOVE N2 N1
+        3: MOVE N1 N1
+        4: MOVE N1 N2
+        5: MOVE N2 N2
+        6: MOVE N2 N1
+        7: MOVE N3 N1
+        8: MOVE N3 N2
+        9: MOVE N2 N2
+       10: MOVE N2 N3
+       11: MOVE N3 N3
+       12: MOVE N3 N2
+       13: MOVE N3 N1
+       14: MOVE N2 N1
+       15: MOVE N1 N1
+       16: MOVE N1 N2
+       17: MOVE N2 N2
+       18: MOVE N2 N3
+       19: MOVE N1 N3
+       20: MOVE N1 N2
+       21: MOVE N2 N2
+       22: MOVE N3 N2
+       23: MOVE N3 N1
+       24: MOVE N2 N1
+       25: MOVE N1 N1
+       26: MOVE N1 N2
+       27: MOVE N2 N2
+       28: MOVE N3 N2
+       29: MOVE N3 N3
+       30: GOAL100
+     
+ oncedone 
+Time: 862.789978
+
+
+ff: found legal plan as follows
+
+step 
+
+time spent:    0.09 seconds instantiating 61 easy, 24 hard action templates
+               0.00 seconds reachability analysis, yielding 286 facts and 85 actions
+               0.01 seconds creating final representation with 286 relevant facts
+               0.07 seconds building connectivity graph
+             862.79 seconds searching, evaluating 1512194 states, to a max depth of 0
+             862.96 seconds total time
+
